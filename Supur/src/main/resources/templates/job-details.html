@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>İlan Detayları</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9f5e9; /* Açık yeşil tonları */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .logo {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+        .job-header {
+            background-color: #004d00;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .job-info {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #004d00;
+        }
+        .job-info p {
+            margin-bottom: 10px;
+        }
+        .job-info .info-label {
+            font-weight: 600;
+            color: #004d00;
+        }
+        .job-image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .job-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            max-height: 300px; /* Maksimum yükseklik ayarı */
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragments/navi :: navi"></div>
+
+<div class="container">
+    <div class="text-center">
+        <img th:src="@{/images/logo.png}" class="logo" alt="SÜPÜR Logo">
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="job-header text-center">
+                <h1 th:text="${job.title}">İş Başlığı</h1>
+            </div>
+            <div class="job-info">
+                <div class="job-image-container">
+                    <img src="/images/detail-placeholder.webp" class="job-image" alt="İlan Resmi">
+                </div>
+                <p><span class="info-label">Açıklama:</span> <span th:text="${job.description}">İş Açıklaması</span></p>
+                <p><span class="info-label">Kategori:</span> <span th:text="${job.category}">Kategori</span></p>
+                <p><span class="info-label">Yayınlayan:</span> <span th:text="${job.user.username}">Kullanıcı Adı</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

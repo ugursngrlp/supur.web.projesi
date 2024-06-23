@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Navigation Fragment</title>
+</head>
+<body>
+<nav th:fragment="navi" class="navbar navbar-expand-lg navbar-dark" style="background-color: #004d00; height: 90px;">
+    <a class="navbar-brand" href="/" th:href="@{/}" style="vertical-align: middle">
+        <img th:src="@{/images/logo.png}" width="120" height="60" class="d-inline-block align-top" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" th:if="${username != null}">
+                <a class="nav-link" th:href="@{/profile}" th:text="${username}">Profil</a>
+            </li>
+            <li class="nav-item" th:if="${username != null}">
+                <a class="nav-link" th:href="@{/logout}">Çıkış Yap</a>
+            </li>
+            <li class="nav-item" th:if="${username == null}">
+                <a class="nav-link" th:href="@{/login}">Giriş Yap</a>
+            </li>
+            <li class="nav-item" th:if="${username == null}">
+                <a class="nav-link" th:href="@{/register}">Kayıt Ol</a>
+            </li>
+            <li class="nav-item dropdown" th:if="${username != null}">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    İlanlar
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" th:href="@{/postJob}">İlan Yayınla</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/category/TUMU}">Tümü</a>
+                    <a class="dropdown-item" th:href="@{/category/TAMIR}">Tamir</a>
+                    <a class="dropdown-item" th:href="@{/category/TEMIZLIK}">Temizlik</a>
+                    <a class="dropdown-item" th:href="@{/category/YAZILIM}">Yazılım</a>
+                    <a class="dropdown-item" th:href="@{/category/DIGER}">Diğer</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profil</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9f5e9;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .logo {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+        .profile-image {
+            max-width: 150px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 3px solid #004d00;
+        }
+        .profile-header {
+            background-color: #004d00;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .profile-info {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #004d00;
+        }
+        .profile-info p {
+            margin-bottom: 10px;
+        }
+        .profile-info .info-label {
+            font-weight: 600;
+            color: #004d00;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragments/navi :: navi"></div>
+
+<div class="container">
+    <div class="text-center">
+        <img th:src="@{/images/logo.png}" class="logo" alt="SÜPÜR Logo">
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="profile-header text-center">
+                <img src="/images/profile.webp" class="profile-image" alt="Profil Resmi">
+                <h1>Hoşgeldin, <span th:text="${user.username}">Kullanıcı Adı</span></h1>
+            </div>
+            <div class="profile-info">
+                <p><span class="info-label">Telefon No:</span> <span th:text="${user.phoneNumber}">Telefon No</span></p>
+                <p><span class="info-label">Mail Adresi:</span> <span th:text="${user.email}">Mail Adresi</span></p>
+                <p><span class="info-label">Bio:</span> <span th:text="${user.bio}">Bio</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

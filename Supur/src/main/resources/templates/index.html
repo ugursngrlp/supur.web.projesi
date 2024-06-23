@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Anasayfa</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9f5e9; /* Açık yeşil tonları */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .job-card img {
+            max-width: 100px;
+            max-height: 100px;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+        .job-card-title {
+            color: #004d00;
+            font-weight: 700;
+        }
+        .job-card-body {
+            flex: 1;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid #004d00;
+        }
+        .job-card-body p {
+            margin-bottom: 10px;
+        }
+        .job-card-footer {
+            background-color: #f1f1f1;
+            border-top: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: right;
+        }
+        .job-card-footer a {
+            color: #004d00;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .job-card-footer a:hover {
+            color: #008000; /* Daha açık yeşil tonları */
+        }
+    </style>
+</head>
+<body>
+<!-- Navigasyon Çubuğu -->
+<div th:replace="fragments/navi :: navi"></div>
+
+<div class="container">
+    <div class="text-center">
+        <img th:src="@{/images/logo.png}" class="logo" alt="SÜPÜR Logo"  width="120" height="60">
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="job-card" th:each="job : ${jobs}">
+                <img src="/images/detail-placeholder.webp" alt="İlan Resmi" >
+                <div class="job-card-body">
+                    <div class="job-card-title" th:text="${job.title}">İş Başlığı</div>
+                    <p th:text="${job.description}">İş Açıklaması</p>
+                    <p><strong>Kullanıcı:</strong> <span th:text="${job.user.username}">Kullanıcı Adı</span></p>
+                    <div class="job-card-footer">
+                        <a th:href="@{/job/{id}(id=${job.id})}">Detayları Gör</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

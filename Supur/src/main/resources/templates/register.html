@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kayıt Ol</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9f5e9; /* Açık yeşil tonları */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .logo {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div th:replace="fragments/navi :: navi"></div>
+<div class="container">
+    <div class="text-center">
+        <img th:src="@{/images/logo.png}" class="logo" alt="SÜPÜR Logo">
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+                <div class="form-group">
+                    <label for="username">Kullanıcı Adı:</label>
+                    <input type="text" id="username" th:field="*{username}" class="form-control" placeholder="Kullanıcı Adı">
+                </div>
+                <div class="form-group">
+                    <label for="password">Şifre:</label>
+                    <input type="password" id="password" th:field="*{password}" class="form-control" placeholder="Şifre">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Telefon No:</label>
+                    <input type="text" id="phoneNumber" th:field="*{phoneNumber}" class="form-control" placeholder="Telefon No">
+                </div>
+                <div class="form-group">
+                    <label for="email">Mail Adresi:</label>
+                    <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="Mail Adresi">
+                </div>
+                <button type="submit" class="btn btn-success btn-block">Kayıt Ol</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

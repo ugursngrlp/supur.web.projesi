@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>İlan Yayınla</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9f5e9; /* Açık yeşil tonları */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .logo {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigasyon Çubuğu -->
+<div th:replace="fragments/navi :: navi"></div>
+
+<div class="container">
+    <div class="text-center">
+        <img th:src="@{/images/logo.png}" class="logo" alt="SÜPÜR Logo">
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>İlan Yayınla</h1>
+            <form th:action="@{/postJob}" th:object="${job}" method="post">
+                <div class="form-group">
+                    <label for="title">Başlık:</label>
+                    <input type="text" id="title" th:field="*{title}" class="form-control" placeholder="İş Başlığı" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Açıklama:</label>
+                    <textarea id="description" th:field="*{description}" class="form-control" placeholder="İş Açıklaması" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="category">Kategori:</label>
+                    <select id="category" th:field="*{category}" class="form-control" required>
+                        <option th:each="category : ${categories}" th:value="${category}" th:text="${category}">Kategori</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success btn-block">İlan Yayınla</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
